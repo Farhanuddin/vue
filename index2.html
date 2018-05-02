@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vuejs - Index 2</title>
+</head>
+<body>
+
+<div id="root">
+
+	
+ <h2> List Items </h2>
+   <ul>
+   	 <li v-for="list in lists" v-text="list.description"></li>
+   </ul>
+
+
+   <h2> Filtered List Items </h2>
+   <ul>
+   	 <li v-for="list in notCompleteList" v-text="list.description"></li>
+   </ul> 
+
+</div>
+
+<!-- Script Tags -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+<script>
+
+	//Vue
+	new Vue({
+		el: '#root',
+		data:{ 
+			lists : [
+					   { description:'Clean Store', completed:false }, 
+					   { description:'Clean House', completed:false }, 
+					   { description:'Clean Road', completed:true },
+					   { description:'Clean Bath', completed:true }
+				   ]
+		},
+
+			computed: {notCompleteList(){
+				return this.lists.filter(list => !list.completed);
+			}
+		}
+
+	});
+
+</script>
+</body>
+
+</html>
